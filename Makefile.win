@@ -1,0 +1,40 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o profesor.o estudiante.o curso.o administrador.o
+LINKOBJ  = main.o profesor.o estudiante.o curso.o administrador.o
+LIBS     = -L"F:/programs/Dev-Cpp/MinGW64/lib" -L"F:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"F:/programs/Dev-Cpp/MinGW64/include" -I"F:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"F:/programs/Dev-Cpp/MinGW64/include" -I"F:/programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Project1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+profesor.o: profesor.cpp
+	$(CPP) -c profesor.cpp -o profesor.o $(CXXFLAGS)
+
+estudiante.o: estudiante.cpp
+	$(CPP) -c estudiante.cpp -o estudiante.o $(CXXFLAGS)
+
+curso.o: curso.cpp
+	$(CPP) -c curso.cpp -o curso.o $(CXXFLAGS)
+
+administrador.o: administrador.cpp
+	$(CPP) -c administrador.cpp -o administrador.o $(CXXFLAGS)
